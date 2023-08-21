@@ -1,0 +1,121 @@
+mongo db documentation
+----------------------
+
+youtube url
+
+https://www.youtube.com/watch?v=gChzfhVGqp8&ab_channel=MafiaCodes
+
+work
+----
+
+mongodb installation - Finished
+
+different port creating
+
+
+docs
+----
+
+cluster
+
+Replica sets
+
+Maintain Same dataset
+Provides redundancy and high availability
+Load balancing
+Basis for all Production deployments
+
+Sharded Cluster 
+
+Distributing Data between different machines
+Useful when u have very large datasets
+
+
+Primary Node
+ 
+ - Replication
+
+    Secondary Node 
+    Secondary Node 
+
+
+Replica Set (commands)
+
+    On Primary Node
+
+    rs.status()
+        Tells the status of replica set 
+
+    rs.initiate()
+        Initiates a replica set on primary node 
+
+    rs.add("localhost:2727")
+        Adds a member to replica set 
+
+    rs.remove("localhost:2727")
+        Removes a member from replica set 
+
+
+Connecting to replica set 
+
+    MongoDB URL 
+
+    typically 
+        mongodb://localhost:27017
+
+    For, Replica sets
+        mongodb://localhost:2717,localhost:2727,localhost:2737/?replicaSet=myRepl
+
+
+Create Folder for DB 
+
+mkdir -p db1 db2 db3
+
+Instance Create 
+
+This Command is create a instance. if you run this command it will create port.
+
+mongod --port 2717 --dbpath db1 --replSet myReplicaSet
+
+mongod --port 2727 --dbpath db2 --replSet myReplicaSet
+
+mongod --port 2737 --dbpath db3 --replSet myReplicaSet
+
+
+like this
+
+instance on port: 2717
+instance on port: 2727
+instance on port: 2737
+
+This is not replica set. so we need to assign that 
+
+Command this 
+
+mongosh --port 2717
+
+rs.status()
+
+this command used to see the member list
+
+rs.initiate()
+
+this command used to initiate the replica set.
+
+rs.add()
+
+rs.add("localhost:2727")
+rs.add("localhost:2737")
+
+this command used to add the member.
+
+we are testing
+
+db create command 
+
+use dbname;
+
+insert document
+db.users.insert({"name":"truly"})
+
+
